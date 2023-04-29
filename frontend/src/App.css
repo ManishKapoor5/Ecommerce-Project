@@ -1,0 +1,21 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300&family=Work+Sans:wght@300&display=swap');
+
+.App{
+  background-image: url(../src/background.jpg);
+  background-size: cover;
+  height: 100vh;
+  overflow: scroll;
+}
+
+a {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+image{
+  width: 100px;
+}
+
+.my-card-body {
+  height: 500px;
+}
