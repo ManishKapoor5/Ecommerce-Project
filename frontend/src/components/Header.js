@@ -6,6 +6,7 @@ import { CartState } from '../context/Context';
 import { AiFillDelete } from 'react-icons/ai';
 import { Logout } from "./Logout";
 import { Flex } from '@chakra-ui/react';
+import DropdownButton from 'react-bootstrap/DropdownButton';
 
 const Header = () => {
   const {
@@ -22,7 +23,7 @@ const Header = () => {
         <Container>
         
             <NavbarBrand>
-               <Link to="/">Shopping Cart</Link>
+               <Link to="/usersdata">Shopping Cart</Link>
             </NavbarBrand>
             <Navbar.Text className='search'>
                 <FormControl 
@@ -37,16 +38,18 @@ const Header = () => {
                 }}
                 />
             </Navbar.Text>
-            <Logout marginLeft="10px"/>
-        <Nav>
-          
-        <Dropdown>
-          <Dropdown.Toggle variant="success">
-            <FaShoppingCart color="white" fontSize="25px"/>
-        <Badge>{cart.length}</Badge>
-          </Dropdown.Toggle>
+            
+            <span className="Badge">{cart.length}</span>
+        <DropdownButton
+      align="end"
+      title={<FaShoppingCart color="white" fontSize="25px"/>}
+      width="30px"
 
-          <Dropdown.Menu align={"start"} style={{ minWidth: 370 }}>
+      id="dropdown-menu-align-end"
+    >
+      
+   {/* <Dropdown.Menu style={{ minWidth: 370 }}> */}
+          
             {cart.length > 0 ? (
               <>
               {cart.map((prod) => (
@@ -64,7 +67,7 @@ const Header = () => {
                    fontSize="20px"
                    style={{ cursor: "pointer"}}
                    onClick={() =>
-                    dispatchEvent({
+                    dispatch({
                       type: "REMOVE_FROM_CART",
                       payload: prod,
                     })
@@ -72,18 +75,24 @@ const Header = () => {
                   />
                 </span>
             ))}
+            <Dropdown.Divider />
+          
             <Link to="/cart">
-              <Button style={{ width: "95%", margin: "0 10px"}}>
+              <Button style={{ width: "55%", margin: "0 10px"}}>
                 Go to Cart
               </Button>
             </Link>
             </>
             ) : (
-        <span style={{ padding: 10}}>Cart is empty!</span>
+        <span style={{ padding: 10}}> Cart is empty!</span>
             )}
-        </Dropdown.Menu>
-        </Dropdown>
-    </Nav>
+        {/* </Dropdown.Menu> */}
+      
+        </DropdownButton>
+
+        
+        <Logout marginLeft="10px"/>
+  
     
     </Container>
     </Navbar>

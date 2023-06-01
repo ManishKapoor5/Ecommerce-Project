@@ -87,7 +87,7 @@ export const Logout = () => {
         <Flex justifyContent="flex-end" mt={2}>
        
      <Button
-    colorScheme='blue'
+    colorScheme='dark'
     onClick={submitHandler}
     >
         Logout
